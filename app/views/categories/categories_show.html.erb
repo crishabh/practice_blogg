@@ -1,0 +1,9 @@
+<h3>Category Name:</h3>
+<p style="color:green;">
+  <%= @category.category_name %>
+</p>
+<h3>Related Blogs:</h3>
+<% @blog.each_with_index do |blog,c| %>
+    <p style="color:RED; "><%= c+1 %>. <%= link_to blog.name, "/#{blog.name}" %></p>
+
+<% end %>
