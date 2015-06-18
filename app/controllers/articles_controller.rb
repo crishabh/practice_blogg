@@ -6,7 +6,6 @@ def index
 end	
 
 def show
-    pp "========#{params[:id]}"
     @r=Blog.find_by_name(params[:id])
 end
 

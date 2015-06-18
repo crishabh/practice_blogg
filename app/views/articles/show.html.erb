@@ -1,4 +1,4 @@
 <h1><%= @r.name %></h1>
-<h1><%= @r.category.category_name %></h1>
+<h1><%= @r.category.category_name if @r.category && !@r.category.category_name.blank? %></h1>
 <h2><%= @r.author.author_name  if @r.author && !@r.author.author_name.blank?  %></h2>
-<h2><%= @r.created_at %></h2>  
+<h2><%= @r.created_at %></h2>
