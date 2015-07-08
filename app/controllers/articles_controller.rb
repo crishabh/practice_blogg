@@ -12,9 +12,12 @@ end
 def create
     Blog.create(blog_params)
 end
+def coupons
+   
+end
 
 private
 	def blog_params
-    params.require(:blog).permit(:name, :author,:category)
+   	       params.require(:blog).permit(:name, :author,:category)
 	end
 end
