@@ -12,6 +12,9 @@ end
 def create
     Blog.create(blog_params)
 end
+def coupons
+   
+end
 
 def author_show
     @auth = Author.find_by_author_name(params[:author_id])
@@ -20,6 +23,6 @@ end
 
 private
 	def blog_params
-    params.require(:blog).permit(:name, :author,:category)
+   	       params.require(:blog).permit(:name, :author,:category)
 	end
 end
