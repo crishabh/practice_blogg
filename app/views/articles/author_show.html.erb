@@ -1,6 +1,6 @@
-<h3>Category Name:</h3>
+<h3>Author Name:</h3>
 <p style="color:green;">
-  <%= @category.category_name %>
+  <%= @auth.author_name.titleize %>
 </p>
 <h3>Related Blogs:</h3>
 <% @blog.each_with_index do |blog,c| %>

@@ -1,12 +1,12 @@
 <% @post.each do |b| %>
 <h5>
-  <%= link_to b.name, b.name %>
+  <%= link_to b.name, "/blogs/#{b.name}" %>
 </h5>
   <h5>
-    Author: <%= b.author.author_name if b.author && !b.author.author_name.blank? %>
+    Author: <%= link_to b.author.author_name,"/blogs/author/#{b.author.author_name}" if b.author && !b.author.author_name.blank? %>
   </h5>
   <p>
-    Category:<%= link_to  b.category.category_name, "/category/#{b.category.category_name}" if b.category && !b.category.category_name.blank? %>
+    Category:<%= link_to  b.category.category_name, "/blogs/category/#{b.category.category_name}" if b.category && !b.category.category_name.blank? %>
   </p>
   <hr>
 <% end %>
