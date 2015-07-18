@@ -12,8 +12,10 @@ ActiveAdmin.register Author do
 #   permitted << :other if resource.something?
 #   permitted
 # end
+index do
+  id_column
+  column :author_name
+  column :name
+end
 
-  def to_s
-    "#{author_name}"
-  end
 end

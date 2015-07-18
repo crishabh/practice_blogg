@@ -16,6 +16,16 @@ ActiveAdmin.register Blog do
     column :name
     column :author
     column :category
+
+    actions
   end
+ 
+
+  filter :author,as:"check_boxes"
+  filter :category, :as => :check_boxes
+
+
+
+
 
 end
