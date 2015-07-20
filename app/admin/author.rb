@@ -6,14 +6,25 @@ ActiveAdmin.register Author do
     actions
     end
 
-  # filter :name,:collection => Blog.all.map(&:name), :as => :check_boxes
-
+   filter :author_name,:label=>"ALL BLOGS " ,:collection => Blog.all.map(&:name), :as => :check_boxes
+  # joins("LEFT JOIN student_enrollments ON courses.id = student_enrollments.course_id")
+  # SELECT COUNT(DISTINCT `categories`.`id`) FROM `categories` LEFT OUTER JOIN `blogs` ON `blogs`.`category_id` = `categories`.`id` WHERE `blogs`.`id` = 3
+  # join("LEFT OUTER JOIN `blogs` ON `blogs`.`category_id` = `categories`.`id` WHERE `blogs`.`id` = 3  ORDER BY `categories`.`id` asc)
   controller do
     def permitted_params
       params.permit!
-    end
 
+    end
   end
+  # show do
+  #   panel "Post Details" do
+  #     render partial: "details", locals: {post: post}
+  #   end
+  #
+  #   panel "Post Tags" do
+  #     render partial: "tags",    locals: {post: post}
+  #   end
+  # end
 
   sidebar 'Books by this Author', :only => :show do
   table_for Blog.joins(:author).where(:author_id => author.id) do |t|
