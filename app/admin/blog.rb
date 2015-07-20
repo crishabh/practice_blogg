@@ -1,31 +1,43 @@
 ActiveAdmin.register Blog do
-
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if resource.something?
-#   permitted
-# end
+  config.sort_order ='id_asc'
   index do
-    column :name
+    column :id
+    column :name do |x|
+      link_to x,"/blogs/#{x}"
+    end
     column :author
     column :category
-
     actions
   end
- 
 
   filter :author,as:"check_boxes"
   filter :category, :as => :check_boxes
 
 
+  controller do
+    def permitted_params
+      params.permit!
+    end
+  end
 
+  form do |f|
+    f.inputs "Edit Blog" do
+      f.input :name
+      f.input :author
+      f.input :category
+    end
+    f.actions
+  end
 
+  show do
+    attributes_table do
+      row :id
+      row :name
+      row :author
+      row :category
+      row :created_at
+      row :updated_at
+    end
 
+  end
 end

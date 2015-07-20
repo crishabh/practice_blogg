@@ -24,5 +24,6 @@ end
 private
 	def blog_params
    	       params.require(:blog).permit(:name, :author,:category)
-	end
+  end
+
 end
