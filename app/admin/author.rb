@@ -13,18 +13,8 @@ ActiveAdmin.register Author do
   controller do
     def permitted_params
       params.permit!
-
     end
   end
-  # show do
-  #   panel "Post Details" do
-  #     render partial: "details", locals: {post: post}
-  #   end
-  #
-  #   panel "Post Tags" do
-  #     render partial: "tags",    locals: {post: post}
-  #   end
-  # end
 
   sidebar 'Books by this Author', :only => :show do
   table_for Blog.joins(:author).where(:author_id => author.id) do |t|
