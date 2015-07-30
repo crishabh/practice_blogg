@@ -1,12 +1,32 @@
-<% @post.each do |b| %>
-<h5>
-  <%= link_to b.name, "/blogs/#{b.name}" %>
-</h5>
-  <h5>
-    Author: <%= link_to b.author.author_name,"/blogs/author/#{b.author.author_name}" if b.author && !b.author.author_name.blank? %>
-  </h5>
-  <p>
-    Category:<%= link_to  b.category.category_name, "/blogs/category/#{b.category.category_name}" if b.category && !b.category.category_name.blank? %>
-  </p>
-  <hr>
-<% end %>
+<style>
+    .search_function{margin-bottom: 20px;}
+    .index_main{padding:10px 30px;}
+    .searching{padding: 15px;border: 1px solid #000;width: 180px;background-color: gray;margin-bottom: 20px;}
+</style>
+<div class="index_main">
+  <form accept-charset="UTF-8" class="search_function" id="searched" method="post" action ="/search">
+    <input class="search_blog" name="search_blogs" value="" placeholder="search your blog">
+    <input type="hidden" name="is_searched" value="true">
+    <input type="submit">
+  </form>
+
+
+   <div class="searching">
+      <% if !@search_result.blank? %>
+          <% @search_result.each_with_index  do |s,i| %>
+              <p><%= i+1 %>. <%= s %></p>
+          <% end %>
+      <% else %>
+          <p>Not Found</p>
+      <% end %>
+    </div>
+
+
+  <% @post.each_with_index do |b,c| %>
+    <h5><%=c+1 %>. Blog Name - <%=  link_to b.name, "/blogs/#{b.name}" %></h5>
+    <h5>Author: <%= link_to b.author.author_name,"/blogs/author/#{b.author.author_name}" if b.author && !b.author.author_name.blank? %></h5>
+    <p>Category:<%= link_to  b.category.category_name, "/blogs/category/#{b.category.category_name}" if b.category && !b.category.category_name.blank? %></p>
+    <hr>
+  <% end %>
+
+</div>
