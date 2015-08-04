@@ -2,8 +2,11 @@ class ArticlesController < ApplicationController
 
 def index
      @post = Blog.all
+    if !params[:is_searched].blank?
+      @search_result = Blog.where("name like?" ,"%#{params[:search_blogs]}%")
+    end
      render "articles.html.erb"
-end	
+end
 
 def show
     @r=Blog.find_by_name(params[:id])
@@ -11,9 +14,6 @@ end
 
 def create
     Blog.create(blog_params)
-end
-def coupons
-   
 end
 
 def author_show
@@ -23,7 +23,7 @@ end
 
 private
 	def blog_params
-   	       params.require(:blog).permit(:name, :author,:category)
+   	   params.require(:blog).permit(:name, :author,:category)
   end
 
 end
