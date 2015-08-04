@@ -1,4 +1,10 @@
-<% @post.each do |b| %>
+<%= form_tag findit_path , method: 'post' do %>
+<%= label_tag :query %>
+<%= text_field_tag :q, params[:q] %>
+<input type="submit" name="submit" >
+<% end %>
+
+<% @posts.each do |b| %>
 <h5>
   <%= link_to b.name, "/blogs/#{b.name}" %>
 </h5>

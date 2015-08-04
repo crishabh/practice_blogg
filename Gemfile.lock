@@ -1,4 +1,27 @@
 GIT
+  remote: git://github.com/elasticsearch/elasticsearch-rails.git
+  revision: ded20356920802c35d258756113acfd95b25ade6
+  specs:
+    elasticsearch-model (0.1.7)
+      activesupport (> 3)
+      elasticsearch (> 0.4)
+      hashie
+    elasticsearch-rails (0.1.7)
+
+GIT
+  remote: git://github.com/elasticsearch/elasticsearch-ruby.git
+  revision: ddd64de73bd96157dd332b2aed226c7d12120a84
+  specs:
+    elasticsearch (1.0.12)
+      elasticsearch-api (= 1.0.12)
+      elasticsearch-transport (= 1.0.12)
+    elasticsearch-api (1.0.12)
+      multi_json
+    elasticsearch-transport (1.0.12)
+      faraday
+      multi_json
+
+GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: 5a2b7b5bc683ae98a114958c3d1eb9c932234c56
   specs:
@@ -88,6 +111,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.4.0)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
     formtastic (3.1.3)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.4.1)
@@ -96,6 +121,7 @@ GEM
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
+    hashie (3.4.2)
     hike (1.2.3)
     i18n (0.7.0)
     inherited_resources (1.6.0)
@@ -124,6 +150,7 @@ GEM
     mini_portile (0.6.2)
     minitest (5.5.1)
     multi_json (1.11.0)
+    multipart-post (2.0.0)
     mysql2 (0.3.18)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
@@ -214,6 +241,9 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   debugger
   devise
+  elasticsearch!
+  elasticsearch-model!
+  elasticsearch-rails!
   jbuilder (~> 2.0)
   jquery-rails
   mysql2
