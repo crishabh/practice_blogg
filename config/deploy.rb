@@ -5,11 +5,12 @@ set :application, 'blogg'
 set :repo_url, 'git@github.com:crishabh/practice_blogg.git'
 
 set :deploy_to, '/home/rails_projects/blogg'
-
+set :user, "ubuntu"
 set :scm, :git
 set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 # Default branch is :master
+
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 # Default deploy_to directory is /var/www/my_app
