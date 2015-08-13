@@ -7,6 +7,13 @@
 # Ignore bundler config.
 /.bundle
 
+#Ignore Database
+/config/database.yml
+/config/development.sphinx.conf
+/config/initializers/global.rb
+# Ignore all partials.
+/uploads
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
