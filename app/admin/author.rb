@@ -5,8 +5,11 @@ ActiveAdmin.register Author do
       column :author_name
     actions
     end
-
-   filter :author_name,:label=>"ALL BLOGS " ,:collection => Blog.all.map(&:name), :as => :check_boxes
+  #
+  # begin filter :author_name,:label=>"ALL BLOGS " ,:collection => Blog.all.map(&:name), :as => :check_boxes
+  # rescue
+  #   p "message"
+  # end
   # joins("LEFT JOIN student_enrollments ON courses.id = student_enrollments.course_id")
   # SELECT COUNT(DISTINCT `categories`.`id`) FROM `categories` LEFT OUTER JOIN `blogs` ON `blogs`.`category_id` = `categories`.`id` WHERE `blogs`.`id` = 3
   # join("LEFT OUTER JOIN `blogs` ON `blogs`.`category_id` = `categories`.`id` WHERE `blogs`.`id` = 3  ORDER BY `categories`.`id` asc)

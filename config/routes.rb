@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+  # devise_for :admin_users, ActiveAdmin::Devise.config
+  # ActiveAdmin.routes(self)
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   get "/", :controller => "articles", :action => "index"
@@ -9,6 +9,13 @@ Rails.application.routes.draw do
   get "/blogs/category/:category_id", :controller => "categories", :action=>"categories_show", :as => "category_blogs"
   get "/blogs/author/:author_id",:controller=>"articles", :action => "author_show"
   match "/search", controller:"articles",action:"index" ,via: [:get, :post]
+
+  # resources :authors,  only: [:index] do
+  #   member do
+  #     get :name
+  #   end
+  # end
+
   # You can have the root of your site routed with "root"
   
 

@@ -44,6 +44,10 @@ set :pty, true
 # set :keep_releases, 5
 namespace :deploy do
 
+# desc "Recreate symlink"
+#   task :resymlink, :roles => :app do
+#     run "rm -f #{current_path} && ln -s #{release_path} #{current_path}"
+#   end
 desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
@@ -60,7 +64,15 @@ after :restart, :clear_cache do
       #   execute :rake, 'cache:clear'
       # end
     end
-  end
 end
+  # after 'deploy:setup' do
+  #   run "#{sudo} chmod -R a+rwx {deploy_to}"
+  #   # -- or --
+  #   run "#{sudo} chown -R {deploy_user} {deploy_to}"
+  # end
 
 
+
+
+# after "deploy:create_symlink", "deploy:resymlink", "deploy:update_crontab"
+end
