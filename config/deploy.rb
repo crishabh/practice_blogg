@@ -9,6 +9,7 @@ set :user, "ubuntu"
 set :scm, :git
 set :use_sudo, false
 set :stage, :production
+
 set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 
 # Default value for linked_dirs is []
@@ -44,13 +45,11 @@ set :pty, true
 # set :keep_releases, 5
 namespace :deploy do
 
-# desc "Recreate symlink"
-#   task :resymlink, :roles => :app do
-#     run "rm -f #{current_path} && ln -s #{release_path} #{current_path}"
-#   end
+
 desc 'Restart application'
   task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
+    on roles(:app,:web), in: :sequence, wait: 5 do
+      execute :mkdir, '-p', "#{ release_path }/tmp"
       execute :touch, release_path.join('tmp/restart.txt')
     end
 end
@@ -70,9 +69,4 @@ end
   #   # -- or --
   #   run "#{sudo} chown -R {deploy_user} {deploy_to}"
   # end
-
-
-
-
-# after "deploy:create_symlink", "deploy:resymlink", "deploy:update_crontab"
 end
