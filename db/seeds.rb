@@ -49,3 +49,5 @@ t= Category.create! :category_name=>"Art"
 u= Category.create! :category_name=>"Cookbooks"
 v= Category.create! :category_name=>"Diaries"
 w= Category.create! :category_name=>"Journals"
+
+admin =  AdminUser.create! (email: 'admin@example.com' ,password: 'password', password_confirmation: 'password')
