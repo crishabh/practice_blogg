@@ -9,6 +9,7 @@ set :user, "ubuntu"
 set :scm, :git
 set :use_sudo, false
 set :stage, :production
+
 set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 
 # Default value for linked_dirs is []
@@ -43,23 +44,29 @@ set :pty, true
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 namespace :deploy do
-  desc 'Restart application'
+
+
+desc 'Restart application'
   task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
+    on roles(:app,:web), in: :sequence, wait: 5 do
+      execute :mkdir, '-p', "#{ release_path }/tmp"
       execute :touch, release_path.join('tmp/restart.txt')
     end
-  end
+end
 
-  after :publishing, 'deploy:restart'
-  after :finishing, 'deploy:cleanup'
-  after :restart, :clear_cache do
+after :publishing, 'deploy:restart'
+after :finishing, 'deploy:cleanup'
+after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
     end
-  end
 end
-
-
+  # after 'deploy:setup' do
+  #   run "#{sudo} chmod -R a+rwx {deploy_to}"
+  #   # -- or --
+  #   run "#{sudo} chown -R {deploy_user} {deploy_to}"
+  # end
+end
