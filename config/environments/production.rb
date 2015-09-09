@@ -63,11 +63,11 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = {:host => "52.27.200.196"}
+  config.action_mailer.default_url_options = {:host => "whiziqs.com"}
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
-  Rails.application.routes.default_url_options[:host] = '52.27.200.196'
+  Rails.application.routes.default_url_options[:host] = 'whiziqs.com'
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
@@ -84,5 +84,5 @@ Rails.application.configure do
 
   ActionMailer::Base.perform_deliveries = true
   ActionMailer::Base.raise_delivery_errors = true
-  config.action_mailer.asset_host = '52.27.200.196'
+  config.action_mailer.asset_host = 'whiziqs.com'
 end
